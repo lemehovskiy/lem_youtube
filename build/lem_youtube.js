@@ -70,11 +70,23 @@
 "use strict";
 
 
+//init youtube
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+window.onYouTubePlayerAPIReady = function () {
+    $(window).trigger('ly.apiReady');
+};
 
 var LemYoutube = function () {
     function LemYoutube(element, options) {
@@ -89,10 +101,8 @@ var LemYoutube = function () {
                 'rel': 0,
                 'showinfo': 0,
                 'controls': 0
-                // 'modestbranding': 1,
-                // 'playlist': players[i].getAttribute("data-yt-id")
-
             }
+
         }, options);
 
         self.$element = $(element);
@@ -105,58 +115,15 @@ var LemYoutube = function () {
         //extend by data options
         self.data_options = self.$element.data('lem-youtube');
 
-        console.log(self.data_options);
+        // console.log(self.data_options);
 
         self.settings = $.extend(true, self.settings, self.data_options);
 
-        console.log(self.settings);
-
-        // //init youtube
-        // var tag = document.createElement('script');
-        //
-        // tag.src = "https://www.youtube.com/iframe_api";
-        // var firstScriptTag = document.getElementsByTagName('script')[0];
-        // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        //
-        // var ytPlayers = [];
-        //
-        // onYouTubePlayerAPIReady = function () {
-        //
-        //     var players = document.querySelectorAll('.youtube-video');
-        //
-        //
-        //     for (var i = 0; i < players.length; i++) {
-        //         var player = new YT.Player(players[i], {
-        //             playerVars: {
-        //                 'autoplay': 1,
-        //                 'loop': 1,
-        //                 'rel': 0,
-        //                 'showinfo': 0,
-        //                 'controls': 0,
-        //                 'modestbranding': 1,
-        //                 'playlist': players[i].getAttribute("data-yt-id")
-        //
-        //             },
-        //             videoId: players[i].getAttribute("data-yt-id"),
-        //             events: {
-        //                 'onReady': onPlayerReady
-        //             }
-        //
-        //         });
-        //
-        //         ytPlayers.push(player);
-        //     }
-        // };
-        //
-        // function onPlayerReady(event) {
-        //
-        //     event.target.mute();
-        //
-        //
-        //     //init videoBackground for youtube video
-        //     $('.youtube-video-background').videoBackground();
-        //
-        // }
+        self.settings.events = {
+            'onReady': function onReady() {
+                self.$element.trigger('ly.playerReady');
+            }
+        };
 
         self.init();
     }
@@ -164,28 +131,26 @@ var LemYoutube = function () {
     _createClass(LemYoutube, [{
         key: 'init',
         value: function init() {
-
             var self = this;
-
             self.player = new YT.Player(self.$player_element[0], self.settings);
         }
     }, {
         key: 'play',
         value: function play() {
-
             var self = this;
-
-            console.log('asdfsd');
-
             self.player.playVideo();
         }
     }, {
         key: 'pause',
         value: function pause() {
-
             var self = this;
-
             self.player.pauseVideo();
+        }
+    }, {
+        key: 'mute',
+        value: function mute() {
+            var self = this;
+            self.player.mute();
         }
     }]);
 
@@ -200,7 +165,6 @@ $.fn.lemYoutube = function () {
         i = void 0,
         ret = void 0;
 
-    // console.log(args);
     for (i = 0; i < length; i++) {
         if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) == 'object' || typeof options == 'undefined') {
             $this[i].lem_youtube = new LemYoutube($this[i], options);

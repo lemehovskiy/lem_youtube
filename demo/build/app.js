@@ -6967,17 +6967,14 @@ __webpack_require__(108);
 
 $(document).ready(function () {
 
-    //init youtube
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    window.onYouTubePlayerAPIReady = function () {
-
+    $(window).on('ly.apiReady', function () {
         $('.youtube-video').lemYoutube();
-    };
+    });
+
+    $('.youtube-video').on('ly.playerReady', function () {
+        $(this).lemYoutube('play');
+        $(this).lemYoutube('mute');
+    });
 
     $('.play-btn').on('click', function () {
         var $item = $(this).closest('.feature-item');
@@ -7015,8 +7012,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js??ref--1-1!../node_modules/postcss-loader/lib/index.js??ref--1-2!../../../node_modules/sass-loader/lib/loader.js??ref--1-3!./style.scss", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js??ref--1-1!../node_modules/postcss-loader/lib/index.js??ref--1-2!../../../node_modules/sass-loader/lib/loader.js??ref--1-3!./style.scss");
+		module.hot.accept("!!../node_modules/css-loader/index.js??ref--1-1!../node_modules/postcss-loader/lib/index.js??ref--1-2!../node_modules/sass-loader/lib/loader.js??ref--1-3!./style.scss", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js??ref--1-1!../node_modules/postcss-loader/lib/index.js??ref--1-2!../node_modules/sass-loader/lib/loader.js??ref--1-3!./style.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -7034,7 +7031,7 @@ exports = module.exports = __webpack_require__(65)(true);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:400,600);", ""]);
 
 // module
-exports.push([module.i, "* {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nhtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after {\n  content: '';\n  content: none; }\n\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput, button {\n  padding: 0;\n  margin: 0;\n  border: none; }\n  input:focus, button:focus {\n    outline: none; }\n\nbody {\n  font-family: 'Roboto', sans-serif;\n  font-size: 18px; }\n\n.back-img {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat; }\n\n.container {\n  margin: auto; }\n\nsection {\n  padding: 0 20px; }\n\n.rect-outer {\n  position: relative; }\n  .rect-outer .rect-inner {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n\n.section-intro {\n  position: relative;\n  min-height: 100vh;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white; }\n  .section-intro:before {\n    content: '';\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0, 0, 0, 0.15); }\n  .section-intro .title {\n    font-size: 50px;\n    text-transform: uppercase;\n    font-weight: 600; }\n    @media (max-width: 600px) {\n      .section-intro .title {\n        font-size: 8.33333vw; } }\n\n.section-features .youtube-video .player {\n  width: 100%;\n  height: 100%; }\n\n.section-features .container {\n  padding: 100px 0;\n  max-width: 1000px; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; } }\n\n.section-features .feature-item + .feature-item {\n  padding: 100px 0 0; }\n  @media (max-width: 800px) {\n    .section-features .feature-item + .feature-item {\n      padding: 70px 0 0; } }\n\n.section-features .feature-item:nth-child(3n+1) .content-col {\n  background: #A5B5AA; }\n\n.section-features .feature-item:nth-child(3n+2) .content-col {\n  background: #6C6B7A; }\n\n.section-features .feature-item:nth-child(3n+3) .content-col {\n  background: #296F8C; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item:nth-child(even) {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n    .section-features .feature-item:nth-child(even) .img-col .img-wrap {\n      right: auto;\n      left: 0; } }\n\n.section-features .feature-item .title {\n  font-size: 30px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 1.5px; }\n\n.section-features .feature-item .desc {\n  padding: 20px 0 0;\n  line-height: 1.3;\n  letter-spacing: .5px; }\n  .section-features .feature-item .desc p + p {\n    margin: 20px 0 0; }\n\n.section-features .feature-item .content-col {\n  color: white;\n  padding: 50px;\n  z-index: 1;\n  position: relative; }\n  @media (max-width: 800px) {\n    .section-features .feature-item .content-col {\n      padding: 30px; } }\n  @media (min-width: 801px) {\n    .section-features .feature-item .content-col {\n      width: 50%; } }\n\n.section-features .feature-item .img-col {\n  position: relative; }\n  @media (min-width: 801px) {\n    .section-features .feature-item .img-col {\n      width: 50%; } }\n  @media (max-width: 800px) {\n    .section-features .feature-item .img-col {\n      min-height: 400px; } }\n  .section-features .feature-item .img-col .img-wrap {\n    position: absolute;\n    right: 0;\n    top: -20px;\n    width: calc(100% + 40px);\n    height: calc(100% + 40px); }\n    @media (max-width: 800px) {\n      .section-features .feature-item .img-col .img-wrap {\n        right: -20px; } }\n    .section-features .feature-item .img-col .img-wrap:before {\n      content: '';\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: rgba(0, 0, 0, 0.15); }\n", "", {"version":3,"sources":["/Users/lemehovskiy1/PhpstormProjects/lem_youtube/demo/sass/style.scss"],"names":[],"mappings":"AACA;EACE,+BAA+B;UACvB,uBAAuB,EAAE;;AAEnC;EACE,UAAU;EACV,WAAW;EACX,UAAU;EACV,gBAAgB;EAChB,cAAc;EACd,yBAAyB,EAAE;;AAE7B,iDAAiD;AACjD;EACE,eAAe,EAAE;;AAEnB;EACE,eAAe,EAAE;;AAEnB;EACE,iBAAiB,EAAE;;AAErB;EACE,aAAa,EAAE;;AAEjB;EACE,YAAY;EACZ,cAAc,EAAE;;AAElB;EACE,YAAY;EACZ,cAAc,EAAE;;AAElB;EACE,0BAA0B;EAC1B,kBAAkB,EAAE;;AAEtB;EACE,WAAW;EACX,UAAU;EACV,aAAa,EAAE;EACf;IACE,cAAc,EAAE;;AAEpB;EACE,kCAAkC;EAClC,gBAAgB,EAAE;;AAEpB;EACE,uBAAuB;EACvB,4BAA4B;EAC5B,6BAA6B,EAAE;;AAEjC;EACE,aAAa,EAAE;;AAEjB;EACE,gBAAgB,EAAE;;AAEpB;EACE,mBAAmB,EAAE;EACrB;IACE,mBAAmB;IACnB,OAAO;IACP,QAAQ;IACR,SAAS;IACT,UAAU,EAAE;;AAEhB;EACE,mBAAmB;EACnB,kBAAkB;EAClB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB;EAC5B,aAAa,EAAE;EACf;IACE,YAAY;IACZ,mBAAmB;IACnB,QAAQ;IACR,OAAO;IACP,SAAS;IACT,UAAU;IACV,gCAAgC,EAAE;EACpC;IACE,gBAAgB;IAChB,0BAA0B;IAC1B,iBAAiB,EAAE;IACnB;MACE;QACE,qBAAqB,EAAE,EAAE;;AAEjC;EACE,YAAY;EACZ,aAAa,EAAE;;AAEjB;EACE,iBAAiB;EACjB,kBAAkB,EAAE;;AAEtB;EACE;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc,EAAE,EAAE;;AAEtB;EACE,mBAAmB,EAAE;EACrB;IACE;MACE,kBAAkB,EAAE,EAAE;;AAE5B;EACE,oBAAoB,EAAE;;AAExB;EACE,oBAAoB,EAAE;;AAExB;EACE,oBAAoB,EAAE;;AAExB;EACE;IACE,+BAA+B;IAC/B,+BAA+B;QAC3B,gCAAgC;YAC5B,4BAA4B,EAAE;IACtC;MACE,YAAY;MACZ,QAAQ,EAAE,EAAE;;AAElB;EACE,gBAAgB;EAChB,iBAAiB;EACjB,0BAA0B;EAC1B,sBAAsB,EAAE;;AAE1B;EACE,kBAAkB;EAClB,iBAAiB;EACjB,qBAAqB,EAAE;EACvB;IACE,iBAAiB,EAAE;;AAEvB;EACE,aAAa;EACb,cAAc;EACd,WAAW;EACX,mBAAmB,EAAE;EACrB;IACE;MACE,cAAc,EAAE,EAAE;EACtB;IACE;MACE,WAAW,EAAE,EAAE;;AAErB;EACE,mBAAmB,EAAE;EACrB;IACE;MACE,WAAW,EAAE,EAAE;EACnB;IACE;MACE,kBAAkB,EAAE,EAAE;EAC1B;IACE,mBAAmB;IACnB,SAAS;IACT,WAAW;IACX,yBAAyB;IACzB,0BAA0B,EAAE;IAC5B;MACE;QACE,aAAa,EAAE,EAAE;IACrB;MACE,YAAY;MACZ,mBAAmB;MACnB,QAAQ;MACR,OAAO;MACP,SAAS;MACT,UAAU;MACV,gCAAgC,EAAE","file":"style.scss","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Roboto:400,600\");\n* {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nhtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after {\n  content: '';\n  content: none; }\n\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput, button {\n  padding: 0;\n  margin: 0;\n  border: none; }\n  input:focus, button:focus {\n    outline: none; }\n\nbody {\n  font-family: 'Roboto', sans-serif;\n  font-size: 18px; }\n\n.back-img {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat; }\n\n.container {\n  margin: auto; }\n\nsection {\n  padding: 0 20px; }\n\n.rect-outer {\n  position: relative; }\n  .rect-outer .rect-inner {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n\n.section-intro {\n  position: relative;\n  min-height: 100vh;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white; }\n  .section-intro:before {\n    content: '';\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0, 0, 0, 0.15); }\n  .section-intro .title {\n    font-size: 50px;\n    text-transform: uppercase;\n    font-weight: 600; }\n    @media (max-width: 600px) {\n      .section-intro .title {\n        font-size: 8.33333vw; } }\n\n.section-features .youtube-video .player {\n  width: 100%;\n  height: 100%; }\n\n.section-features .container {\n  padding: 100px 0;\n  max-width: 1000px; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; } }\n\n.section-features .feature-item + .feature-item {\n  padding: 100px 0 0; }\n  @media (max-width: 800px) {\n    .section-features .feature-item + .feature-item {\n      padding: 70px 0 0; } }\n\n.section-features .feature-item:nth-child(3n+1) .content-col {\n  background: #A5B5AA; }\n\n.section-features .feature-item:nth-child(3n+2) .content-col {\n  background: #6C6B7A; }\n\n.section-features .feature-item:nth-child(3n+3) .content-col {\n  background: #296F8C; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item:nth-child(even) {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n    .section-features .feature-item:nth-child(even) .img-col .img-wrap {\n      right: auto;\n      left: 0; } }\n\n.section-features .feature-item .title {\n  font-size: 30px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 1.5px; }\n\n.section-features .feature-item .desc {\n  padding: 20px 0 0;\n  line-height: 1.3;\n  letter-spacing: .5px; }\n  .section-features .feature-item .desc p + p {\n    margin: 20px 0 0; }\n\n.section-features .feature-item .content-col {\n  color: white;\n  padding: 50px;\n  z-index: 1;\n  position: relative; }\n  @media (max-width: 800px) {\n    .section-features .feature-item .content-col {\n      padding: 30px; } }\n  @media (min-width: 801px) {\n    .section-features .feature-item .content-col {\n      width: 50%; } }\n\n.section-features .feature-item .img-col {\n  position: relative; }\n  @media (min-width: 801px) {\n    .section-features .feature-item .img-col {\n      width: 50%; } }\n  @media (max-width: 800px) {\n    .section-features .feature-item .img-col {\n      min-height: 400px; } }\n  .section-features .feature-item .img-col .img-wrap {\n    position: absolute;\n    right: 0;\n    top: -20px;\n    width: calc(100% + 40px);\n    height: calc(100% + 40px); }\n    @media (max-width: 800px) {\n      .section-features .feature-item .img-col .img-wrap {\n        right: -20px; } }\n    .section-features .feature-item .img-col .img-wrap:before {\n      content: '';\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: rgba(0, 0, 0, 0.15); }\n"],"sourceRoot":""}]);
+exports.push([module.i, "* {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nhtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after {\n  content: '';\n  content: none; }\n\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput, button {\n  padding: 0;\n  margin: 0;\n  border: none; }\n  input:focus, button:focus {\n    outline: none; }\n\nbody {\n  font-family: 'Roboto', sans-serif;\n  font-size: 18px; }\n\n.back-img {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat; }\n\n.container {\n  margin: auto; }\n\nsection {\n  padding: 0 20px; }\n\n.rect-outer {\n  position: relative; }\n  .rect-outer .rect-inner {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n\n.btn-group {\n  margin: 0 -10px; }\n  .btn-group .btn {\n    margin: 0 10px; }\n\n.btn {\n  font-size: 16px;\n  font-weight: 700;\n  padding: 17px 20px;\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 1.5px;\n  -webkit-transition: .5s;\n  -o-transition: .5s;\n  transition: .5s; }\n\n.section-intro {\n  position: relative;\n  min-height: 100vh;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white; }\n  .section-intro:before {\n    content: '';\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0, 0, 0, 0.15); }\n  .section-intro .title {\n    font-size: 50px;\n    text-transform: uppercase;\n    font-weight: 600; }\n    @media (max-width: 600px) {\n      .section-intro .title {\n        font-size: 8.33333vw; } }\n\n.section-features .btn-group {\n  padding: 20px 0 0; }\n\n.section-features .youtube-video .player {\n  width: 100%;\n  height: 100%;\n  position: relative; }\n\n.section-features .container {\n  padding: 100px 0;\n  max-width: 1000px; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; } }\n\n.section-features .feature-item + .feature-item {\n  padding: 100px 0 0; }\n  @media (max-width: 800px) {\n    .section-features .feature-item + .feature-item {\n      padding: 70px 0 0; } }\n\n.section-features .feature-item:nth-child(3n+1) .content-col {\n  background: #A5B5AA; }\n\n.section-features .feature-item:nth-child(3n+2) .content-col {\n  background: #6C6B7A; }\n\n.section-features .feature-item:nth-child(3n+3) .content-col {\n  background: #296F8C; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item:nth-child(even) {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n    .section-features .feature-item:nth-child(even) .img-col .img-wrap {\n      right: auto;\n      left: 0; } }\n\n.section-features .feature-item .title {\n  font-size: 30px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 1.5px; }\n\n.section-features .feature-item .desc {\n  padding: 20px 0 0;\n  line-height: 1.3;\n  letter-spacing: .5px; }\n  .section-features .feature-item .desc p + p {\n    margin: 20px 0 0; }\n\n.section-features .feature-item .content-col {\n  color: white;\n  padding: 50px;\n  z-index: 1;\n  position: relative; }\n  @media (max-width: 800px) {\n    .section-features .feature-item .content-col {\n      padding: 30px; } }\n  @media (min-width: 801px) {\n    .section-features .feature-item .content-col {\n      width: 50%; } }\n\n.section-features .feature-item .img-col {\n  position: relative; }\n  @media (min-width: 801px) {\n    .section-features .feature-item .img-col {\n      width: 50%; } }\n  @media (max-width: 800px) {\n    .section-features .feature-item .img-col {\n      min-height: 400px; } }\n  .section-features .feature-item .img-col .img-wrap {\n    position: absolute;\n    right: 0;\n    top: -20px;\n    width: calc(100% + 40px);\n    height: calc(100% + 40px); }\n    @media (max-width: 800px) {\n      .section-features .feature-item .img-col .img-wrap {\n        right: -20px; } }\n    .section-features .feature-item .img-col .img-wrap:before {\n      content: '';\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: rgba(0, 0, 0, 0.15); }\n", "", {"version":3,"sources":["/Users/lemehovskiy/PhpstormProjects/lem_youtube/demo/sass/style.scss"],"names":[],"mappings":"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","file":"style.scss","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Roboto:400,600\");\n* {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\nhtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after {\n  content: '';\n  content: none; }\n\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput, button {\n  padding: 0;\n  margin: 0;\n  border: none; }\n  input:focus, button:focus {\n    outline: none; }\n\nbody {\n  font-family: 'Roboto', sans-serif;\n  font-size: 18px; }\n\n.back-img {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat; }\n\n.container {\n  margin: auto; }\n\nsection {\n  padding: 0 20px; }\n\n.rect-outer {\n  position: relative; }\n  .rect-outer .rect-inner {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n\n.btn-group {\n  margin: 0 -10px; }\n  .btn-group .btn {\n    margin: 0 10px; }\n\n.btn {\n  font-size: 16px;\n  font-weight: 700;\n  padding: 17px 20px;\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 1.5px;\n  -webkit-transition: .5s;\n  -o-transition: .5s;\n  transition: .5s; }\n\n.section-intro {\n  position: relative;\n  min-height: 100vh;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white; }\n  .section-intro:before {\n    content: '';\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0, 0, 0, 0.15); }\n  .section-intro .title {\n    font-size: 50px;\n    text-transform: uppercase;\n    font-weight: 600; }\n    @media (max-width: 600px) {\n      .section-intro .title {\n        font-size: 8.33333vw; } }\n\n.section-features .btn-group {\n  padding: 20px 0 0; }\n\n.section-features .youtube-video .player {\n  width: 100%;\n  height: 100%;\n  position: relative; }\n\n.section-features .container {\n  padding: 100px 0;\n  max-width: 1000px; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; } }\n\n.section-features .feature-item + .feature-item {\n  padding: 100px 0 0; }\n  @media (max-width: 800px) {\n    .section-features .feature-item + .feature-item {\n      padding: 70px 0 0; } }\n\n.section-features .feature-item:nth-child(3n+1) .content-col {\n  background: #A5B5AA; }\n\n.section-features .feature-item:nth-child(3n+2) .content-col {\n  background: #6C6B7A; }\n\n.section-features .feature-item:nth-child(3n+3) .content-col {\n  background: #296F8C; }\n\n@media (min-width: 801px) {\n  .section-features .feature-item:nth-child(even) {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n    .section-features .feature-item:nth-child(even) .img-col .img-wrap {\n      right: auto;\n      left: 0; } }\n\n.section-features .feature-item .title {\n  font-size: 30px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 1.5px; }\n\n.section-features .feature-item .desc {\n  padding: 20px 0 0;\n  line-height: 1.3;\n  letter-spacing: .5px; }\n  .section-features .feature-item .desc p + p {\n    margin: 20px 0 0; }\n\n.section-features .feature-item .content-col {\n  color: white;\n  padding: 50px;\n  z-index: 1;\n  position: relative; }\n  @media (max-width: 800px) {\n    .section-features .feature-item .content-col {\n      padding: 30px; } }\n  @media (min-width: 801px) {\n    .section-features .feature-item .content-col {\n      width: 50%; } }\n\n.section-features .feature-item .img-col {\n  position: relative; }\n  @media (min-width: 801px) {\n    .section-features .feature-item .img-col {\n      width: 50%; } }\n  @media (max-width: 800px) {\n    .section-features .feature-item .img-col {\n      min-height: 400px; } }\n  .section-features .feature-item .img-col .img-wrap {\n    position: absolute;\n    right: 0;\n    top: -20px;\n    width: calc(100% + 40px);\n    height: calc(100% + 40px); }\n    @media (max-width: 800px) {\n      .section-features .feature-item .img-col .img-wrap {\n        right: -20px; } }\n    .section-features .feature-item .img-col .img-wrap:before {\n      content: '';\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: rgba(0, 0, 0, 0.15); }\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -12529,11 +12526,23 @@ if ( !noGlobal ) {
 "use strict";
 
 
+//init youtube
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+window.onYouTubePlayerAPIReady = function () {
+    $(window).trigger('ly.apiReady');
+};
 
 var LemYoutube = function () {
     function LemYoutube(element, options) {
@@ -12548,10 +12557,8 @@ var LemYoutube = function () {
                 'rel': 0,
                 'showinfo': 0,
                 'controls': 0
-                // 'modestbranding': 1,
-                // 'playlist': players[i].getAttribute("data-yt-id")
-
             }
+
         }, options);
 
         self.$element = $(element);
@@ -12564,58 +12571,15 @@ var LemYoutube = function () {
         //extend by data options
         self.data_options = self.$element.data('lem-youtube');
 
-        console.log(self.data_options);
+        // console.log(self.data_options);
 
         self.settings = $.extend(true, self.settings, self.data_options);
 
-        console.log(self.settings);
-
-        // //init youtube
-        // var tag = document.createElement('script');
-        //
-        // tag.src = "https://www.youtube.com/iframe_api";
-        // var firstScriptTag = document.getElementsByTagName('script')[0];
-        // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        //
-        // var ytPlayers = [];
-        //
-        // onYouTubePlayerAPIReady = function () {
-        //
-        //     var players = document.querySelectorAll('.youtube-video');
-        //
-        //
-        //     for (var i = 0; i < players.length; i++) {
-        //         var player = new YT.Player(players[i], {
-        //             playerVars: {
-        //                 'autoplay': 1,
-        //                 'loop': 1,
-        //                 'rel': 0,
-        //                 'showinfo': 0,
-        //                 'controls': 0,
-        //                 'modestbranding': 1,
-        //                 'playlist': players[i].getAttribute("data-yt-id")
-        //
-        //             },
-        //             videoId: players[i].getAttribute("data-yt-id"),
-        //             events: {
-        //                 'onReady': onPlayerReady
-        //             }
-        //
-        //         });
-        //
-        //         ytPlayers.push(player);
-        //     }
-        // };
-        //
-        // function onPlayerReady(event) {
-        //
-        //     event.target.mute();
-        //
-        //
-        //     //init videoBackground for youtube video
-        //     $('.youtube-video-background').videoBackground();
-        //
-        // }
+        self.settings.events = {
+            'onReady': function onReady() {
+                self.$element.trigger('ly.playerReady');
+            }
+        };
 
         self.init();
     }
@@ -12623,28 +12587,26 @@ var LemYoutube = function () {
     _createClass(LemYoutube, [{
         key: 'init',
         value: function init() {
-
             var self = this;
-
             self.player = new YT.Player(self.$player_element[0], self.settings);
         }
     }, {
         key: 'play',
         value: function play() {
-
             var self = this;
-
-            console.log('asdfsd');
-
             self.player.playVideo();
         }
     }, {
         key: 'pause',
         value: function pause() {
-
             var self = this;
-
             self.player.pauseVideo();
+        }
+    }, {
+        key: 'mute',
+        value: function mute() {
+            var self = this;
+            self.player.mute();
         }
     }]);
 
@@ -12659,7 +12621,6 @@ $.fn.lemYoutube = function () {
         i = void 0,
         ret = void 0;
 
-    // console.log(args);
     for (i = 0; i < length; i++) {
         if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) == 'object' || typeof options == 'undefined') {
             $this[i].lem_youtube = new LemYoutube($this[i], options);

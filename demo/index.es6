@@ -12,20 +12,16 @@ require("../build/lem_youtube");
 
 
 $(document).ready(function () {
-    
-    //init youtube
-    var tag = document.createElement('script');
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    window.onYouTubePlayerAPIReady = function () {
-
+    $(window).on('ly.apiReady', function(){
         $('.youtube-video').lemYoutube();
+    });
 
-
-    };
+    $('.youtube-video').on('ly.playerReady', function(){
+        $(this).lemYoutube('play');
+        $(this).lemYoutube('mute');
+    });
 
 
     $('.play-btn').on('click', function(){

@@ -38,5 +38,24 @@ section {
 }
 
 
+.btn-group {
+  margin: 0 -10px;
+
+  .btn {
+    margin: 0 10px;
+  }
+}
+
+.btn {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 17px 20px;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 1.5px;
+  transition: .5s;
+}
+
+
 @import "partials/section-intro";
 @import "partials/section-features-list";

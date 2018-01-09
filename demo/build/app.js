@@ -12557,6 +12557,9 @@ var LemYoutube = function () {
                 'rel': 0,
                 'showinfo': 0,
                 'controls': 0
+            },
+            events: {
+                'onReady': function onReady() {}
             }
 
         }, options);

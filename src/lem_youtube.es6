@@ -22,6 +22,11 @@ class LemYoutube {
                 'rel': 0,
                 'showinfo': 0,
                 'controls': 0
+            },
+            events: {
+                'onReady': function(){
+
+                }
             }
 
         }, options);

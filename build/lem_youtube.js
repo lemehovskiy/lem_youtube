@@ -97,7 +97,10 @@ var LemYoutube = function () {
 
         self.$element = $(element);
 
-        self.$player_element = $(self.$element.find('.player'));
+        //create div for iframe init
+        $(self.$element).append('<div class="player"></div>');
+
+        self.$player_element = $(self.$element).find('.player');
 
         //extend by data options
         self.data_options = self.$element.data('lem-youtube');
@@ -171,6 +174,8 @@ var LemYoutube = function () {
         value: function play() {
 
             var self = this;
+
+            console.log('asdfsd');
 
             self.player.playVideo();
         }

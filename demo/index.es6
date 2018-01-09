@@ -12,9 +12,7 @@ require("../build/lem_youtube");
 
 
 $(document).ready(function () {
-
-
-
+    
     //init youtube
     var tag = document.createElement('script');
 
@@ -31,14 +29,19 @@ $(document).ready(function () {
 
 
     $('.play-btn').on('click', function(){
-        $('.youtube-video').lemYoutube('play');
+        let $item = $(this).closest('.feature-item');
+        let $youtube = $item.find('.youtube-video');
+
+        $youtube.lemYoutube('play');
     })
 
 
     $('.pause-btn').on('click', function(){
-        $('.youtube-video').lemYoutube('pause');
-    })
+        let $item = $(this).closest('.feature-item');
+        let $youtube = $item.find('.youtube-video');
 
+        $youtube.lemYoutube('pause');
+    })
 
 
 });

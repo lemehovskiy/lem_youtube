@@ -16,7 +16,9 @@
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     window.onYouTubePlayerAPIReady = function () {
-        $(window).trigger('ly.apiReady');
+        $(document).ready(function () {
+            $(window).trigger('ly.apiReady');
+        });
     };
 
     class LemYoutube {

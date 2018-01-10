@@ -19,8 +19,7 @@ $(document).ready(function () {
     });
 
     $('.youtube-video').on('ly.playerReady', function(){
-        $(this).lemYoutube('play');
-        $(this).lemYoutube('mute');
+        $(this).lemYoutube('ytPlayer', 'setSize', [1, 2]);
     });
 
 

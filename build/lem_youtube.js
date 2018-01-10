@@ -118,8 +118,6 @@ var LemYoutube = function () {
         //extend by data options
         self.data_options = self.$element.data('lem-youtube');
 
-        // console.log(self.data_options);
-
         self.settings = $.extend(true, self.settings, self.data_options);
 
         self.settings.events = {
@@ -138,22 +136,20 @@ var LemYoutube = function () {
             self.player = new YT.Player(self.$player_element[0], self.settings);
         }
     }, {
-        key: 'play',
-        value: function play() {
+        key: 'ytPlayer',
+        value: function ytPlayer(method, args) {
+
             var self = this;
-            self.player.playVideo();
-        }
-    }, {
-        key: 'pause',
-        value: function pause() {
-            var self = this;
-            self.player.pauseVideo();
-        }
-    }, {
-        key: 'mute',
-        value: function mute() {
-            var self = this;
-            self.player.mute();
+
+            var params = [];
+
+            if ((typeof args === 'undefined' ? 'undefined' : _typeof(args)) === 'object') {
+                params = args;
+            } else {
+                params.push(args);
+            }
+
+            self.player[method].apply(self.player, params);
         }
     }]);
 

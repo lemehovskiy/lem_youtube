@@ -24,7 +24,7 @@ class LemYoutube {
                 'controls': 0
             },
             events: {
-                'onReady': function(){
+                'onReady': function () {
 
                 }
             }
@@ -40,18 +40,14 @@ class LemYoutube {
 
         //extend by data options
         self.data_options = self.$element.data('lem-youtube');
-
-        // console.log(self.data_options);
-
+        
         self.settings = $.extend(true, self.settings, self.data_options);
-
-
+        
         self.settings.events = {
-            'onReady': function(){
+            'onReady': function () {
                 self.$element.trigger('ly.playerReady');
             }
         }
-
 
         self.init();
     }
@@ -61,19 +57,21 @@ class LemYoutube {
         self.player = new YT.Player(self.$player_element[0], self.settings);
     }
 
-    play() {
-        let self = this;
-        self.player.playVideo();
-    }
+    ytPlayer(method, args) {
 
-    pause() {
         let self = this;
-        self.player.pauseVideo();
-    }
 
-    mute() {
-        let self = this;
-        self.player.mute();
+        let params = [];
+
+        if (typeof args === 'object'){
+            params = args;
+        }
+
+        else {
+            params.push(args);
+        }
+
+        self.player[method].apply(self.player, params);
     }
 }
 

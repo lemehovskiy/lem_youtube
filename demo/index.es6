@@ -27,7 +27,7 @@ $(document).ready(function () {
         let $item = $(this).closest('.feature-item');
         let $youtube = $item.find('.youtube-video');
 
-        $youtube.lemYoutube('play');
+        $youtube.lemYoutube('ytPlayer', 'playVideo');
     })
 
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
         let $item = $(this).closest('.feature-item');
         let $youtube = $item.find('.youtube-video');
 
-        $youtube.lemYoutube('pause');
+        $youtube.lemYoutube('ytPlayer', 'pauseVideo');
     })
 
 

@@ -6979,14 +6979,14 @@ $(document).ready(function () {
         var $item = $(this).closest('.feature-item');
         var $youtube = $item.find('.youtube-video');
 
-        $youtube.lemYoutube('play');
+        $youtube.lemYoutube('ytPlayer', 'playVideo');
     });
 
     $('.pause-btn').on('click', function () {
         var $item = $(this).closest('.feature-item');
         var $youtube = $item.find('.youtube-video');
 
-        $youtube.lemYoutube('pause');
+        $youtube.lemYoutube('ytPlayer', 'pauseVideo');
     });
 });
 

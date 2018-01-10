@@ -1,7 +1,13 @@
+/*
+ Version: 1.0.0
+ Author: lemehovskiy
+ Website: http://lemehovskiy.github.io
+ Repo: https://github.com/lemehovskiy/lem_youtube
+*/
+
 'use strict';
 
-
-;(function ($) {
+(function ($) {
     //init youtube
     let tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";

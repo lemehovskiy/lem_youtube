@@ -12523,6 +12523,13 @@ if ( !noGlobal ) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/*
+ Version: 1.0.0
+ Author: lemehovskiy
+ Website: http://lemehovskiy.github.io
+ Repo: https://github.com/lemehovskiy/lem_youtube
+*/
+
 
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -12531,7 +12538,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-;(function ($) {
+(function ($) {
     //init youtube
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";

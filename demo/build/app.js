@@ -12525,111 +12525,112 @@ if ( !noGlobal ) {
 "use strict";
 
 
-//init youtube
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
+;(function ($) {
+    //init youtube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
 
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-window.onYouTubePlayerAPIReady = function () {
-    $(window).trigger('ly.apiReady');
-};
+    window.onYouTubePlayerAPIReady = function () {
+        $(window).trigger('ly.apiReady');
+    };
 
-var LemYoutube = function () {
-    function LemYoutube(element, options) {
-        _classCallCheck(this, LemYoutube);
+    var LemYoutube = function () {
+        function LemYoutube(element, options) {
+            _classCallCheck(this, LemYoutube);
 
-        var self = this;
-
-        self.settings = $.extend(true, {
-            playerVars: {
-                'autoplay': 0,
-                'loop': 1,
-                'rel': 0,
-                'showinfo': 0,
-                'controls': 0
-            },
-            events: {
-                'onReady': function onReady() {}
-            }
-
-        }, options);
-
-        self.$element = $(element);
-
-        //create div for iframe init
-        $(self.$element).append('<div class="player"></div>');
-
-        self.$player_element = $(self.$element).find('.player');
-
-        //extend by data options
-        self.data_options = self.$element.data('lem-youtube');
-
-        self.settings = $.extend(true, self.settings, self.data_options);
-
-        self.settings.events = {
-            'onReady': function onReady() {
-                self.$element.trigger('ly.playerReady');
-            }
-        };
-
-        self.init();
-    }
-
-    _createClass(LemYoutube, [{
-        key: 'init',
-        value: function init() {
             var self = this;
-            self.player = new YT.Player(self.$player_element[0], self.settings);
+
+            self.settings = $.extend(true, {
+                playerVars: {
+                    'autoplay': 0,
+                    'loop': 1,
+                    'rel': 0,
+                    'showinfo': 0,
+                    'controls': 0
+                },
+                events: {
+                    'onReady': function onReady() {}
+                }
+
+            }, options);
+
+            self.$element = $(element);
+
+            //create div for iframe init
+            $(self.$element).append('<div class="player"></div>');
+
+            self.$player_element = $(self.$element).find('.player');
+
+            //extend by data options
+            self.data_options = self.$element.data('lem-youtube');
+
+            self.settings = $.extend(true, self.settings, self.data_options);
+
+            self.settings.events = {
+                'onReady': function onReady() {
+                    self.$element.trigger('ly.playerReady');
+                }
+            };
+
+            self.init();
         }
-    }, {
-        key: 'ytPlayer',
-        value: function ytPlayer(method, args) {
 
-            var self = this;
+        _createClass(LemYoutube, [{
+            key: 'init',
+            value: function init() {
+                var self = this;
+                self.player = new YT.Player(self.$player_element[0], self.settings);
+            }
+        }, {
+            key: 'ytPlayer',
+            value: function ytPlayer(method, args) {
 
-            var params = [];
+                var self = this;
 
-            if ((typeof args === 'undefined' ? 'undefined' : _typeof(args)) === 'object') {
-                params = args;
+                var params = [];
+
+                if ((typeof args === 'undefined' ? 'undefined' : _typeof(args)) === 'object') {
+                    params = args;
+                } else {
+                    params.push(args);
+                }
+
+                self.player[method].apply(self.player, params);
+            }
+        }]);
+
+        return LemYoutube;
+    }();
+
+    $.fn.lemYoutube = function () {
+        var $this = this,
+            options = arguments[0],
+            args = Array.prototype.slice.call(arguments, 1),
+            length = $this.length,
+            i = void 0,
+            ret = void 0;
+
+        for (i = 0; i < length; i++) {
+            if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) == 'object' || typeof options == 'undefined') {
+                $this[i].lem_youtube = new LemYoutube($this[i], options);
             } else {
-                params.push(args);
+                ret = $this[i].lem_youtube[options].apply($this[i].lem_youtube, args);
             }
 
-            self.player[method].apply(self.player, params);
+            if (typeof ret != 'undefined') return ret;
         }
-    }]);
-
-    return LemYoutube;
-}();
-
-$.fn.lemYoutube = function () {
-    var $this = this,
-        options = arguments[0],
-        args = Array.prototype.slice.call(arguments, 1),
-        length = $this.length,
-        i = void 0,
-        ret = void 0;
-
-    for (i = 0; i < length; i++) {
-        if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) == 'object' || typeof options == 'undefined') {
-            $this[i].lem_youtube = new LemYoutube($this[i], options);
-        } else {
-            ret = $this[i].lem_youtube[options].apply($this[i].lem_youtube, args);
-        }
-
-        if (typeof ret != 'undefined') return ret;
-    }
-    return $this;
-};
+        return $this;
+    };
+})(jQuery);
 
 /***/ })
 /******/ ]);

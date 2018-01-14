@@ -105,7 +105,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             self.settings = $.extend(true, {
                 playerVars: {
-                    'loop': 1,
                     'rel': 0,
                     'showinfo': 0,
                     'modestbranding': 1

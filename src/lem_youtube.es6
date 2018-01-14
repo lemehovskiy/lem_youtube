@@ -27,16 +27,10 @@
 
             self.settings = $.extend(true, {
                 playerVars: {
-                    'autoplay': 0,
                     'loop': 1,
                     'rel': 0,
                     'showinfo': 0,
-                    'controls': 0
-                },
-                events: {
-                    'onReady': function () {
-
-                    }
+                    'modestbranding': 1
                 }
 
             }, options);

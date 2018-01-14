@@ -93,7 +93,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     window.onYouTubePlayerAPIReady = function () {
         $(document).ready(function () {
-            $(window).trigger('ly.apiReady');
+            $(window).trigger('ytApiReady.ly');
         });
     };
 
@@ -125,7 +125,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             self.settings.events = {
                 'onReady': function onReady() {
-                    self.$element.trigger('ly.playerReady');
+                    self.$element.trigger('onReady.ly');
+                },
+                'onStateChange': function onStateChange(event) {
+                    self.$element.trigger('onStateChange.ly', event.data);
                 }
             };
 

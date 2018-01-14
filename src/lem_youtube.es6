@@ -17,7 +17,7 @@
 
     window.onYouTubePlayerAPIReady = function () {
         $(document).ready(function () {
-            $(window).trigger('ly.apiReady');
+            $(window).trigger('ytApiReady.ly');
         });
     };
 
@@ -47,7 +47,10 @@
 
             self.settings.events = {
                 'onReady': function () {
-                    self.$element.trigger('ly.playerReady');
+                    self.$element.trigger('onReady.ly');
+                },
+                'onStateChange': function (event) {
+                    self.$element.trigger('onStateChange.ly', event.data);
                 }
             }
 

@@ -14,12 +14,18 @@ require("../build/lem_youtube");
 $(document).ready(function () {
 
 
-    $(window).on('ly.apiReady', function(){
+    $(window).on('ytApiReady.ly', function(){
         $('.youtube-video').lemYoutube();
     });
 
-    $('.youtube-video').on('ly.playerReady', function(){
+    $('.youtube-video').on('onReady.ly', function(){
         $(this).lemYoutube('ytPlayer', 'setSize', [1, 2]);
+    });
+
+    $('.youtube-video').on('onStateChange.ly', function(event, data){
+        if (data == 0) {
+            $(this).lemYoutube('ytPlayer', 'playVideo')
+        }
     });
 
 

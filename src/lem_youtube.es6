@@ -28,8 +28,7 @@
             self.settings = $.extend(true, {
                 playerVars: {
                     'rel': 0,
-                    'showinfo': 0,
-                    'modestbranding': 1
+                    'showinfo': 0
                 }
 
             }, options);

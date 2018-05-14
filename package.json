@@ -2,9 +2,9 @@
     "name": "lem_youtube",
     "version": "1.0.0",
     "description": "jQuery youtube initializer",
-    "main": "build\/lem_youtube.js",
+    "main": "build/lem_youtube.js",
     "dependencies": {
-
+        "yt_api_load": "^0.1.0"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
@@ -21,7 +21,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https:\/\/github.com\/lemehovskiy\/lem_youtube"
+        "url": "https://github.com/lemehovskiy/lem_youtube"
     },
     "author": "lemehovskiy",
     "license": "ISC"

@@ -8,19 +8,6 @@
 'use strict';
 
 (function ($) {
-    //init youtube
-    let tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-
-    let firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    window.onYouTubePlayerAPIReady = function () {
-        $(document).ready(function () {
-            $(window).trigger('ytApiReady.ly');
-        });
-    };
-
     class LemYoutube {
         constructor(element, options) {
             let self = this;

@@ -84,19 +84,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function ($) {
-    //init youtube
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    window.onYouTubePlayerAPIReady = function () {
-        $(document).ready(function () {
-            $(window).trigger('ytApiReady.ly');
-        });
-    };
-
     var LemYoutube = function () {
         function LemYoutube(element, options) {
             _classCallCheck(this, LemYoutube);

@@ -4,7 +4,7 @@ require("jquery");
 
 require("../build/lem_youtube");
 
-let yt_api_ready = require("../../yt_api_load/build/yt_api_load");
+let yt_api_ready = require("yt_api_load");
 
 yt_api_ready().then(
     function () {

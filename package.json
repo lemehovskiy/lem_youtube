@@ -4,7 +4,6 @@
     "description": "jQuery youtube initializer",
     "main": "build/lem_youtube.js",
     "dependencies": {
-        "yt_api_load": "^0.1.0"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
